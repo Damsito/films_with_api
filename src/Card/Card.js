@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import { toggle} from "../app/FavoritesSlice";
 import ButtonFavorites from "../Button/ButtonFavorites";
 
 function Card({ film }) {

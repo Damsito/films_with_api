@@ -1,5 +1,5 @@
 import "./Home.css";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Input from "../Input/Input";
 import VerticalList from "../VerticalList";
@@ -24,7 +24,7 @@ function Home() {
         event.preventDefault()
         setSearchParams(value ? { q: value } : {});
     }
-    function usePosts() {
+    function useFilms() {
         return useQuery(["films", filmQuery], async () => {
             const { data } = await axios.get(
                 getUrl(filmQuery)
@@ -32,12 +32,11 @@ function Home() {
             return data;
         });
     }
-    const {data, error, isLoading, isFetching} = usePosts();
+    const {data, error, isLoading, isFetching} = useFilms();
     return (
             <section className="overflow-hidden text-gray-700 ">
               <div className="container px-5 py-2 mx-auto lg:pt-12 lg:px-32">
                 <Input value={value} submitButton={submitButton} handleChange={handleChange} />
-
                   {error && <div>{error}</div>}
                   {(isLoading || isFetching) && <div>Loading movies...</div>}
                   {!isLoading && !error && (

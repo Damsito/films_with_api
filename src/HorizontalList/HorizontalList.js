@@ -1,27 +1,33 @@
-import filmsData from "../Data/data.json";
-import Card from "../Card/Card";
 
-function HorizontalList({ id, genre_ids }) {
-  let recommandations = new Set([]);
-  filmsData.forEach((f) => {
-    let rec = f.genre_ids.filter((genre) => {
-      return genre_ids.includes(genre);
-    });
-    if (rec.length > 0) {
-      recommandations.add(f);
-    }
+import Card from "../Card/Card";
+import {useQuery} from "react-query";
+import axios from "axios";
+import getUrl from "../API/getUrl";
+import React from "react";
+import VerticalList from "../VerticalList";
+
+function HorizontalList({ id, genres }) { function useFilms() {
+  return useQuery(["films"], async () => {
+    const { data } = await axios.get(
+        getUrl()
+    );
+    return data;
   });
-  let finalArray = Array.from(recommandations)
-    .filter((f) => f.id !== parseInt(id))
-    .slice(0, 4);
+}
+  const {data, error, isLoading, isFetching} = useFilms();
+  let finalArray = data ? data?.results.slice(0,4) : data?.results
   return (
     <div>
       <h1>Contenu similaire</h1>
-      <div className={"grid grid-cols-4 gap-4"}>
-        {finalArray.map((film) => {
-          return <Card key={film.id} film={film} />;
-        })}
-      </div>
+      {error && <div>{error}</div>}
+      {(isLoading || isFetching) && <div>Loading movies...</div>}
+      {!isLoading && !error && (
+          <div className={"grid grid-cols-4 gap-4"}>
+            {finalArray.map((film) => {
+              return <Card key={film.id} film={film} />;
+            })}
+          </div>
+      )}
     </div>
   );
 }
