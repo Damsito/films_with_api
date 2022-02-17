@@ -15,4 +15,7 @@ function VerticalList({films}){
         </div>
     )
 }
+VerticalList.defaultProps = {
+    films: [],
+};
 export default VerticalList
