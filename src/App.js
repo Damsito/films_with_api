@@ -4,8 +4,10 @@ import Home from "./Home/Home";
 import Film from "./Film/Film";
 
 
+
 export default function App() {
   return (
+
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
@@ -13,5 +15,6 @@ export default function App() {
         <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>
+
   );
 }

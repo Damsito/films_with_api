@@ -1,15 +1,16 @@
 import {useDispatch, useSelector} from "react-redux";
-import {toggle} from "../app/FavoritesSlice";
+import {favoritesSlice} from "../app/FavoritesSlice";
+
 
 function ButtonFavorites({id}) {
     const dispatch = useDispatch()
-    const toggleFavorites = (event) => {
-        event.preventDefault()
-        dispatch(toggle(id))
-    }
-    const favorites = useSelector(state => state.favorites)
+    const addToFavorite = (event) => {
+        event.preventDefault();
+        dispatch(favoritesSlice.actions.toggle({ id }));
+    };
+    const favorites = useSelector(state => state.favorites) || []
     let exists = favorites.find((f) => f == id)
-    return <button onClick={toggleFavorites}>
+    return <button onClick={addToFavorite}>
         { exists ? <svg
             aria-hidden="true"
             focusable="false"

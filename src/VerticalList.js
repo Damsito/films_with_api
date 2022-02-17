@@ -1,6 +1,9 @@
 import Card from "./Card/Card";
 
 function VerticalList({films}){
+    if(!films.length){
+        return <h2>Aucun film ne correspond à votre recherche.</h2>
+    }
     return (
         <div className="flex flex-wrap -m-1 md:-m-2 mt-5">
             {films.map((film, index) => {

@@ -4,16 +4,20 @@ import "./index.css";
 import App from "./App";
 import "tw-elements";
 import {QueryClient, QueryClientProvider} from "react-query";
-import store from "./app/store";
 import {Provider} from "react-redux";
+import { PersistGate } from 'redux-persist/integration/react'
+import {store, persistor} from "./app/store";
+
 const queryClient = new QueryClient()
 const rootElement = document.getElementById("root");
 
 render(
-    <QueryClientProvider client={queryClient}>
-        <Provider store={store}>
-        <App />
-        </Provider>
-    </QueryClientProvider>,
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            <QueryClientProvider client={queryClient}>
+                <App />
+            </QueryClientProvider>
+        </PersistGate>
+    </Provider>,
     rootElement
 );
