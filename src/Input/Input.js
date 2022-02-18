@@ -1,9 +1,5 @@
 import React from "react";
-import {useSelector} from "react-redux";
-
 function Input({ value, handleChange,submitButton }) {
-  const favorites = useSelector(state => state.favorites) || []
-
   return (
       <div className={'flex'}>
           <form className="w-full max-w-sm mb-1 ">
@@ -25,11 +21,7 @@ function Input({ value, handleChange,submitButton }) {
                   </button>
               </div>
           </form>
-          <div className={'flex ml-auto my-auto'}>
-              {favorites.length} {favorites.length > 1 ? 'favoris' : 'favori' }
-          </div>
       </div>
-
   );
 }
 
