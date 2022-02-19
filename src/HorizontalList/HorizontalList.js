@@ -4,16 +4,16 @@ import {useQuery} from "react-query";
 import axios from "axios";
 import getUrl from "../API/getUrl";
 import React from "react";
-import VerticalList from "../VerticalList";
 
-function HorizontalList({ id, genres }) { function useFilms() {
-  return useQuery(["films"], async () => {
-    const { data } = await axios.get(
-        getUrl()
-    );
-    return data;
-  });
-}
+function HorizontalList({id}) {
+  function useFilms() {
+    return useQuery(["films"], async () => {
+      const { data } = await axios.get(
+          `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`
+      );
+      return data;
+    });
+  }
   const {data, error, isLoading, isFetching} = useFilms();
   let finalArray = data ? data?.results.slice(0,4) : data?.results
   return (

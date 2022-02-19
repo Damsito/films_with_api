@@ -15,7 +15,7 @@ export default function App() {
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/films/:id" element={<Film />} />
-                <Route path="/mes-favoris" element={<Favorites />} />
+                <Route path="/favorites" element={<Favorites />} />
                 <Route path="*" element={<Home />} />
             </Routes>
         </main>

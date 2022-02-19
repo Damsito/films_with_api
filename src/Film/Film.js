@@ -43,7 +43,7 @@ function Film() {
                         </div>
                         <div className={"mt-5"}>{data.overview}</div>
                         <Rating note={data.vote_average} />
-                        <HorizontalList id={data.id} genres={data.genres} />
+                        <HorizontalList id={data.id} />
                     </>
                 )
 

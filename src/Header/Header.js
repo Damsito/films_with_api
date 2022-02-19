@@ -11,7 +11,7 @@ function Header() {
                 <Link  to="/">
                     Home
                 </Link>
-                <Link  to="/mes-favoris">
+                <Link  to="/favorites">
                     {`Favorites (${favorites.length})`}
                 </Link>
             </nav>

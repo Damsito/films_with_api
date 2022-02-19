@@ -10,7 +10,7 @@ function Card({ film }) {
             src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
             alt={film.title}
           />}
-            <div className={'absolute right-3 top-2'}>
+            <div className={'absolute right-3 top-10'}>
                 <ButtonFavorites id={film.id} /></div>
         </Link>
       </div>
