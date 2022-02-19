@@ -5,7 +5,7 @@ function Header() {
     const favorites = useSelector((state) => state.favorites);
     return (
         <header className={"flex items-center px-4"}>
-            <img src="./logo32.png" alt="Webflix log" />
+            <img src="/logo32.png" alt="Webflix log" />
             <h1 >Webflix</h1>
             <nav className={'flex-grow flex justify-end'}>
                 <Link  to="/">
