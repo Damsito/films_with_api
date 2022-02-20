@@ -8,9 +8,10 @@ function Details({ film }) {
         <h1>{film.title}</h1>
         <h2>Sorti le {releaseDate}</h2>
         <div className={"grid mt-5"}>
-          {film.genres.map((genre) => {
-            return <Genre key={genre.id} name={genre.name} />;
-          })}
+          {film.genres &&
+            film.genres.map((genre) => {
+              return <Genre key={genre.id} name={genre.name} />;
+            })}
         </div>
       </div>
     </div>
